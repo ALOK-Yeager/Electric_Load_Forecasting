@@ -95,7 +95,7 @@ python manage.py runserver
 ```
 Navigate to http://127.0.0.1:8000/ in your browser to see the dashboard.
 
-## � Development Tools
+## 🔧 Development Tools
 
 ### Error History Tracking
 
@@ -130,46 +130,6 @@ python install_packages.py
 python server/swag/management/commands/generate_test_errors.py
 ```
 
-## 🚀 GitHub Repository Management
-
-### Preparing Your Code for GitHub
-
-Before pushing your code to GitHub, run the preparation script to ensure security best practices:
-
-```bash
-python prepare_for_github.py
-```
-
-This script will:
-- Check for sensitive information in .env files
-- Ensure .gitignore includes all necessary entries
-- Look for private key files that shouldn't be committed
-- Clean up compiled Python files
-- Help set up your Git repository
-
-### Pushing Updates to GitHub
-
-After making changes to your code, follow these steps to update your GitHub repository:
-
-```bash
-# 1. Add your changes
-git add .
-
-# 2. Commit your changes with a descriptive message
-git commit -m "Add error history tracking and update dashboard"
-
-# 3. Push to GitHub
-git push origin main
-```
-
-### Security Best Practices
-
-- **Never commit sensitive information** like API keys or passwords
-- Use environment variables for all sensitive data
-- Keep your .env file in .gitignore
-- Provide a .env.example file as a template
-- Regularly audit your code for hardcoded credentials
-
 ## 🔐 Security Notes
 
 - Never commit your `.env` file to the repository
@@ -179,7 +139,7 @@ git push origin main
   - Use a strong, unique `DJANGO_SECRET_KEY`
   - Secure any API endpoints with proper authentication
 
-## �📈 Why This Matters: Business Impact
+## 📈 Why This Matters: Business Impact
 
 Inaccurate electricity load forecasting leads to significant financial losses and grid instability for power distribution companies. This system addresses that challenge by providing automated, reliable, and actionable demand predictions.
 
