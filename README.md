@@ -1,7 +1,7 @@
 # Electric Load Forecasting
 
 Under graduate project on short term electric load forecasting. Data was taken from [State Load Despatch Center, Delhi](www.delhisldc.org/) website and multiple time series algorithms were implemented during the course of the project.
-
+#
 ### Models implemented:
 
 `models` folder contains all the algorithms/models implemented during the course of the project:
@@ -17,7 +17,6 @@ Under graduate project on short term electric load forecasting. Data was taken f
 * Gated Recurrent Unit cells [GRU.ipynb](models/GRU.ipynb)
 
 scripts:
-
 * `aws_arima.py` fits ARIMA model on last one month's data and forecasts load for each day.
 * `aws_rnn.py` fits RNN, LSTM, GRU on last 2 month's data and forecasts load for each day.
 * `aws_smoothing.py` fits SES, SMA, WMA on last one month's data and forecasts load for each day.
@@ -30,10 +29,3 @@ scripts:
 
 ![A screenshot of the website](screenshots/website.png "A screenshot of the website")
 
-
-### Team Members:
-
-* Ayush Kumar Goyal
-* Boragapu Sunil Kumar
-* Srimukha Paturi
-* Rishabh Agrahari
