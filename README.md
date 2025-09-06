@@ -130,14 +130,6 @@ python install_packages.py
 python server/swag/management/commands/generate_test_errors.py
 ```
 
-## 🔐 Security Notes
-
-- Never commit your `.env` file to the repository
-- The `.gitignore` is set up to prevent sensitive files from being included
-- For production deployment, make sure to:
-  - Set `DEBUG=False` in your `.env` file
-  - Use a strong, unique `DJANGO_SECRET_KEY`
-  - Secure any API endpoints with proper authentication
 
 ## 📈 Why This Matters: Business Impact
 
