@@ -34,8 +34,9 @@
 	user = db_user
 	password = userpassword
 	default-character-set = utf8
-
+ 
 #for Completetly removing mysql
+
 	sudo service mysql stop  #or mysqld
 	sudo killall -9 mysql
 	sudo killall -9 mysqld
@@ -48,5 +49,7 @@
 	sudo apt-get purge mysql-client-core-5.7
 	sudo rm -rf /var/log/mysql
 	sudo rm -rf /etc/mysql 
+
+
 
 
