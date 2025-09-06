@@ -10,7 +10,6 @@ from bs4 import BeautifulSoup
 import numpy as np
 import pandas as pd
 from .models import CSV
-from swag.utils import get_formatted_error_history
 
 
 def home_page(request):
@@ -167,46 +166,3 @@ def forecasted_plot(request):
         }
     # print(cont)
     return HttpResponse(json.dumps(cont),content_type='application/json')
-
-
-def home(request):
-    """
-    Main dashboard view for the Electric Load Forecasting system.
-    Displays forecast data and error history.
-    """
-    template_name = 'Home_page.html'
-    
-    # Load your existing forecast data
-    arima_data = ModelData.objects.filter(model__contains='arima').order_by('-date')
-    ses_data = ModelData.objects.filter(model__contains='ses').order_by('-date')
-    sma_data = ModelData.objects.filter(model__contains='sma').order_by('-date')
-    wma_data = ModelData.objects.filter(model__contains='wma').order_by('-date')
-    hw_data = ModelData.objects.filter(model__contains='hw').order_by('-date')
-    rnn_data = ModelData.objects.filter(model__contains='rnn').order_by('-date')
-    lstm_data = ModelData.objects.filter(model__contains='lstm').order_by('-date')
-    gru_data = ModelData.objects.filter(model__contains='gru').order_by('-date')
-    ffnn_data = ModelData.objects.filter(model__contains='ffnn').order_by('-date')
-    
-    # Load error history (last 14 days by default)
-    error_history = get_formatted_error_history(days=14)
-    
-    context = {
-        'arima_data': arima_data,
-        'ses_data': ses_data,
-        'sma_data': sma_data,
-        'wma_data': wma_data,
-        'hw_data': hw_data,
-        'rnn_data': rnn_data,
-        'lstm_data': lstm_data,
-        'gru_data': gru_data,
-        'ffnn_data': ffnn_data,
-        
-        # Add error history to context
-        'error_history': error_history,
-        'has_error_history': error_history['has_data'],
-        'error_models': error_history['models'],
-        'error_dates': error_history['dates'],
-        'overall_stats': error_history['overall_stats']
-    }
-    
-    return render(request, template_name, context)

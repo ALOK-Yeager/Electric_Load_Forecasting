@@ -1,0 +1,72 @@
+{% if has_error_history %}
+<div class="card mb-4">
+    <div class="card-header">
+        <h5 class="card-title mb-0">
+            <i class="fas fa-chart-line mr-2"></i> Forecast Error History
+        </h5>
+    </div>
+    <div class="card-body">
+        <div class="row mb-3">
+            <div class="col-md-4">
+                <div class="card bg-light">
+                    <div class="card-body p-3">
+                        <h6 class="card-subtitle mb-2 text-muted">Overall Performance</h6>
+                        <div class="d-flex justify-content-between">
+                            <span>Avg Error:</span>
+                            <strong>{{ overall_stats.avg_formatted }}</strong>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <span>Threshold Violations:</span>
+                            <strong>{{ overall_stats.threshold_violations }} / {{ overall_stats.total_forecasts
+                                }}</strong>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <span>Violation Rate:</span>
+                            <strong>{{ overall_stats.violation_rate_formatted }}</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-8">
+                <div class="alert alert-info">
+                    <i class="fas fa-info-circle mr-2"></i> Showing last 14 days of forecast performance. Errors above
+                    5% are highlighted.
+                </div>
+            </div>
+        </div>
+
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover">
+                <thead class="thead-light">
+                    <tr>
+                        <th>Model</th>
+                        <th>Avg</th>
+                        <th>Min</th>
+                        <th>Max</th>
+                        {% for date in error_dates %}
+                        <th>{{ date|slice:"5:" }}</th>
+                        {% endfor %}
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for model_name, model_data in error_models.items %}
+                    <tr>
+                        <td><strong>{{ model_name }}</strong></td>
+                        <td>{{ model_data.avg_formatted }}</td>
+                        <td>{{ model_data.min_formatted }}</td>
+                        <td>{{ model_data.max_formatted }}</td>
+
+                        {% for error in model_data.errors %}
+                        <td class="{% if error.is_violation %}table-danger{% endif %}">
+                            {{ error.formatted }}
+                        </td>
+                        {% endfor %}
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endif %}

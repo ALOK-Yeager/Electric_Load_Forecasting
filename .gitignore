@@ -90,8 +90,13 @@ celerybeat-schedule
 # SageMath parsed files
 *.sage.py
 
-# dotenv
+# dotenv environment variables file
 .env
+.env.local
+.env.development
+.env.production
+.env.*
+!.env.example
 
 # virtualenv
 .venv
@@ -111,3 +116,73 @@ ENV/
 # mypy
 .mypy_cache/
 server/celerybeat.pid
+
+# Environment variables
+.env
+.env.*
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Python bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Django
+*.log
+*.pot
+*.pyc
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+media/
+staticfiles/
+
+# Forecast data and logs
+aws_arima_log.txt
+monthdata.csv
+ARIMA_month_model.pkl
+data/error_history.json
+
+# IDE files
+.idea/
+.vscode/
+*.swp
+*.swo
+*.sublime-workspace
+*.sublime-project
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# Private key files
+*.pem
+*.key
